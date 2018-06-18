@@ -53,16 +53,16 @@ ui <- dashboardPage(
       div(class = "col-md-12",
 
           tabBox(width = NULL,
-
-                 tabPanel("Library", fluidRow(column(12, DT::dataTableOutput("table")))),
-
+                 
                  tabPanel("About",
                           fluidRow(
-                          column(9, id = "about",
-                                 includeMarkdown("README.md")
-                                 )
+                            column(9, id = "about",
+                                   includeMarkdown("README.md")
+                            )
                           )
-                 )
+                 ),
+
+                 tabPanel("Library", fluidRow(column(12, DT::dataTableOutput("table"))))
 
           )
       ),

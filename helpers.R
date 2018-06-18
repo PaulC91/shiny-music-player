@@ -36,6 +36,9 @@ get_meta <- function(url) {
     embed <- paste0(embed, "?autoplay=1")
   } else if (str_detect(embed, "soundcloud")) {
     embed <- str_replace(embed, "auto_play=false", "auto_play=true")
+  } else if (str_detect(embed, "mixcloud")) {
+    embed <- str_replace(embed, "feed=%2", "autoplay=1&feed=%2") %>% 
+      str_replace("&amp;hide_cover=1&amp;hide_tracklist=1", "")
   }
 
   image <- filter_all(dat, any_vars(. == "twitter:image"))$content
