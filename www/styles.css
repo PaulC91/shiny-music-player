@@ -1,0 +1,63 @@
+body, .h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+  font-family: 'Titillium Web', sans-serif;
+}
+
+.main-header .logo {
+  font-family: 'Titillium Web', sans-serif;
+  font-weight: light;
+  font-size: 24px;
+}
+
+.main-header{
+  position: fixed;
+  width: 100%;
+}
+
+.sidebar {
+  position: fixed;
+  overflow: visible;
+  width: 350px;
+}
+
+.content {
+  margin-top: 50px;
+}
+
+img, .dataTable {
+  border: 1;
+  max-width: 100%;
+}
+
+.back-to-top {
+  cursor: pointer;
+  position: fixed;
+  bottom: 0;
+  right: 20px;
+  display:none;
+  color: #000000;
+  /*background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.6);*/
+}
+
+.btn-loading-container {
+  margin-left: 10px;
+  font-size: 1.2em;
+  display: inline-block;
+}
+
+.btn-done-indicator {
+  color: green;
+  display: inline-block;
+}
+
+.btn-err {
+  margin-top: 10px;
+  color: red;
+  display: inline-block;
+}
+
+table img {
+  height: 70px;
+  display: block;
+  margin: 0 auto;
+}
