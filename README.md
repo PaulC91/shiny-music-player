@@ -1,5 +1,7 @@
 # Shiny Music Player
 
+https://apps.cultureofinsight.com/shiny-music-player/
+
 This app is an example of how you can use shiny to collate a data base of music from URLs of various music streaming sites such as Soundcloud, YouTube, Bandcamp and Mixcloud.
 
 The interface can then be used to explore your collection and load embed versions of the URLs provided into an in-app iframe.
