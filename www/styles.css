@@ -23,6 +23,17 @@ body, .h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
   margin-top: 50px;
 }
 
+@media only screen and (min-width : 320px) {
+  .content {
+    margin-top: 100px;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .content {
+    margin-top: 50px;
+  }
+}
+
 img, .dataTable {
   border: 1;
   max-width: 100%;
