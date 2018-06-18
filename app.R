@@ -14,7 +14,7 @@ ui <- dashboardPage(
 
   dashboardHeader(title = "Shiny Music Player", titleWidth = 350,
 
-                  tags$li(a(href = 'http://github.com/paulc91',
+                  tags$li(a(href = 'http://github.com/paulc91/shiny-music-player',
                             target = "_blank",
                             icon("github"),
                             title = "See the code on github"),
@@ -56,9 +56,9 @@ ui <- dashboardPage(
 
                  tabPanel("Library", fluidRow(column(12, DT::dataTableOutput("table")))),
 
-                 tabPanel("About", 
+                 tabPanel("About",
                           fluidRow(
-                          column(9, id = "about", 
+                          column(9, id = "about",
                                  includeMarkdown("README.md")
                                  )
                           )

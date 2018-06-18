@@ -1,7 +1,7 @@
 service_options <- c("youtu", "soundcloud", "bandcamp", "spotify", "mixcloud")
 
 # The 2 lines of code below is run once to save your gs auth token in the app's working directory
-# then app then using this token to authenticate each tim it is launched
+# the app then uses this token to authenticate each time it is launched
 #token <- gs_auth(cache = FALSE)
 #saveRDS(token, file = "googlesheets_shiny_token.rds")
 
@@ -12,36 +12,36 @@ sheet_key <- "1fXobkrovIjB1AgbP5TxzlFVztpJ9tTMQHb8-Js_KFoA"
 # https://stackoverflow.com/questions/27863627/parsing-meta-name-content-using-xml-and-r
 
 get_meta <- function(url) {
-  
+
   pg <- read_html(url)
-  
+
   all_meta_attrs <- unique(unlist(lapply(lapply(pg %>% html_nodes("meta"), html_attrs), names)))
-  
+
   dat <- data.frame(lapply(all_meta_attrs, function(x) {
     pg %>% html_nodes("meta") %>% html_attr(x)
   }), stringsAsFactors = FALSE)
-  
+
   colnames(dat) <- all_meta_attrs
-  
+
   track <- filter_all(dat, any_vars(. == "og:title"))$content
   track <- ifelse(identical(track, character(0)), "", track)
-  
+
   description <- filter_all(dat, any_vars(. == "og:description"))$content
   description <- ifelse(identical(description, character(0)), "", description)
-  
+
   embed <- filter_all(dat, any_vars(. == "twitter:player"))$content
   embed <- ifelse(identical(embed, character(0)), "", embed)
-  
+
   if (str_detect(url, "youtu")) {
     embed <- paste0(embed, "?autoplay=1")
   } else if (str_detect(embed, "soundcloud")) {
     embed <- str_replace(embed, "auto_play=false", "auto_play=true")
   }
-  
+
   image <- filter_all(dat, any_vars(. == "twitter:image"))$content
   image <- ifelse(identical(image, character(0)), filter_all(dat, any_vars(. == "og:image"))$content, image)
   image <- ifelse(identical(image, character(0)), "", image)
-  
+
   tibble(
     Added = Sys.time(),
     Track = track,
@@ -51,7 +51,7 @@ get_meta <- function(url) {
     Artwork = sprintf("<img src='%s' title='%s'/>", image, str_replace_all(description, "'", "")),
     Image = image
   )
-  
+
 }
 
 # Thanks to Dean Attali for the busy indicator code
@@ -98,7 +98,7 @@ withBusyIndicatorServer <- function(buttonId, expr) {
     shinyjs::enable(buttonId)
     shinyjs::hide(selector = loadingEl)
   })
-  
+
   # Try to run the code when the button is clicked and show an error message if
   # an error occurs or a success message if it completes
   tryCatch({
